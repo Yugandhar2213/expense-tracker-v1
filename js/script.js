@@ -21,16 +21,19 @@ function addTransaction() {
         document.getElementById("category").value;
     let date =
         document.getElementById("date").value;
+        let payment = document.getElementById("payment").value;
     if (description === "" || amount === 0 || date === "") {
         alert("Please fill all fields.");
         return;
     }
     let transaction = {
-        description: description,
-        amount: amount,
-        category: category,
-        date: date
-    };
+    description,
+    amount,
+    category,
+    date,
+    payment,
+    receipt
+};
     if (editIndex === -1) {
         transactions.push(transaction);
     } else {
@@ -81,6 +84,20 @@ function displayTransactions(data) {
         <p><strong>💰 Amount :</strong> ₹${transaction.amount}</p>
         <p><strong>📂 Category :</strong> ${transaction.category}</p>
         <p><strong>📅 Date :</strong> ${transaction.date}</p>
+        <p><strong>💳 Payment :</strong> ${transaction.payment}</p>
+        ${
+transaction.receipt
+?
+`
+<p><strong>📷 Receipt</strong></p>
+
+<img src="${transaction.receipt}"
+     width="180"
+     style="border-radius:8px;margin-top:8px;">
+`
+:
+""
+}
         <div class="button-group">
             <button
                 class="edit-btn"
@@ -117,6 +134,7 @@ function editTransaction(index) {
         transaction.category;
     document.getElementById("date").value =
         transaction.date;
+        document.getElementById("payment").value = transaction.payment;
     editIndex = index;
     document.getElementById("addBtn").innerHTML =
         "Update Transaction";
@@ -148,6 +166,17 @@ function clearForm() {
     document.getElementById("amount").value = "";
     document.getElementById("category").value = "Salary";
     document.getElementById("date").value = "";
+    document.getElementById("payment").value = "Cash";
+    document.getElementById("receipt").value = "";
+    let receiptInput = document.getElementById("receipt");
+
+let receipt = "";
+
+if(receiptInput.files.length > 0){
+
+    receipt = URL.createObjectURL(receiptInput.files[0]);
+
+}
 }
 function drawChart() {
     let totals = {};
