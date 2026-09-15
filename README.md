@@ -210,7 +210,7 @@ Licensed under the **GNU General Public License v3.0**. Use it, change it, share
 
 <div align="center">
 
-**Built by [P. Sampath Kumar](https://github.com/sampath2417k)**
+**Built by [M.Yugandhar](https://github.com/Yugandhar2213)**
 
 If this was useful, a ⭐ on the repo goes a long way.
 
